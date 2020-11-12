@@ -19,3 +19,5 @@ RUN pip install poetry; \
 # Copy project
 COPY . .
 RUN find ./ -name "*.sh" -exec chmod +x {} \;
+
+CMD ["./test.sh"]

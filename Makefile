@@ -27,3 +27,9 @@ docker-dev-environment: docker-build
 				-it \
 				--mount type=bind,src=${PWD},target=/locust-tests \
 				locust-tests sh
+
+docker-run-tests:
+	docker run --network host \
+				--rm \
+				--mount type=bind,src=${PWD},target=/locust-tests \
+				locust-tests
