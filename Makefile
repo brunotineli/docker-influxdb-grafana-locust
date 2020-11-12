@@ -15,3 +15,15 @@ stop-dependencies:
 
 stop-dependencies-removing-volumes:
 	@docker-compose -f docker/docker-compose.yml down -v
+
+
+docker-build:
+	@docker build -t locust-tests -f docker/Dockerfile .
+
+
+docker-dev-environment: docker-build
+	docker run --network host \
+				--rm \
+				-it \
+				--mount type=bind,src=${PWD},target=/locust-tests \
+				locust-tests sh
